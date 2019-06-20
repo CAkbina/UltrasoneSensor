@@ -1,0 +1,33 @@
+int triggerPin = 12;
+int echoPin = 8;
+
+float tijd;
+float afstand;
+
+
+
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(triggerPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  
+}
+
+void loop() {
+  digitalWrite(triggerPin, LOW);
+  delayMicroseconds(2);
+
+  digitalWrite(triggerPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(triggerPin, LOW);
+
+  tijd = pulseIn(echoPin, HIGH);
+  afstand = (tijd * 0.0343) / 2;
+
+  Serial.print("Afstand ");
+  Serial.println(afstand);
+
+
+
+}
